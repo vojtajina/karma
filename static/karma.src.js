@@ -8,7 +8,8 @@ var socket = io.connect('http://' + location.host, {
   'reconnection delay': 500,
   'reconnection limit': 2000,
   'resource': karmaSrcPrefix + 'socket.io',
-  'max reconnection attempts': Infinity
+  'max reconnection attempts': Infinity,
+  'secure': true
 });
 
 var browsersElement = document.getElementById('browsers');
