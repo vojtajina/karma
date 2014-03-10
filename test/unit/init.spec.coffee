@@ -196,16 +196,18 @@ describe 'init', ->
       # autoWatch
       machine.onLine 'yes'
 
+
     it 'should generate the test-main for requirejs', (done) ->
       machine.process m.questions, (answers) ->
         basePath = m.getBasePath '../karma.conf.js', '/some/path'
-        processedAnswers = m.processAnswers answers, basePath
+        processedAnswers = m.processAnswers answers, basePath, 'test-main.js'
         generatedConfigCode = formatter.generateConfigFile processedAnswers
         config = evaluateConfigCode generatedConfigCode
 
         # expect correct processedAnswers
         expect(processedAnswers.generateTestMain).to.be.ok
         expect(processedAnswers.files).to.contain 'test-main.js'
+
         # expect correct configuration
         expect(config.frameworks).to.contain 'requirejs'
         for pattern in config.files.slice(1)

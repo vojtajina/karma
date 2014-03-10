@@ -1,7 +1,7 @@
 allTestFiles = []
-TEST_REGEXP = /test\.coffee$/
+TEST_REGEXP = /(spec|test)(\.coffee)?(\.js)?$/i
 pathToModule = (path) ->
-  path.replace(/^\/base\//, "").replace /\.coffee$/, ""
+  path.replace(/^\/base\//, "").replace(/\.js$/, "").replace(/\.cofee$/, "")
 
 Object.keys(window.__karma__.files).forEach (file) ->
   # Normalize paths to RequireJS module names.
